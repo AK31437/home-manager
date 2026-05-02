@@ -1,0 +1,15 @@
+[general]
+import = [ "~/.config/alacritty/rose-pine-moon.toml" ]
+
+[window]
+opacity = 0.85
+decorations = "None"
+startup_mode = "Maximized"
+padding = { x = 20, y = 20 }
+dynamic_padding = true
+
+[font]
+size = 14
+
+[cursor]
+style = { blinking = "On" }
