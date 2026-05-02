@@ -44,7 +44,9 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
+    ".config/fish/config.fish".source = ./config.fish;
     ".config/alacritty".source = ./alacritty;
+    ".config/nvim".source = ./nvim;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

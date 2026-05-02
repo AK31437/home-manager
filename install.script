@@ -1,0 +1,11 @@
+# Single-user nix install
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
+
+nix-channel --add https://channels.nixos.org/nixpkgs-unstable nixpkgs
+
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+
+nix-channel --update
+
+nix-shell '<home-manager>' -A install
+
