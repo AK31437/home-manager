@@ -45,7 +45,6 @@
     # ".screenrc".source = dotfiles/screenrc;
 
     ".config/fish/config.fish".source = ./config.fish;
-    ".config/alacritty".source = ./alacritty;
     ".config/nvim".source = ./nvim;
 
     # # You can also set the file content immediately.
@@ -75,6 +74,40 @@
     # EDITOR = "emacs";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
+    alacritty = {
+      enable = true;
+      # alacritty binary comes from Arch (pacman); HM manages config only
+      package = null;
+      settings = {
+	general.import = [ "${pkgs.alacritty-theme}/share/alacritty-theme/rose_pine_moon.toml" ]; # theme from the alacritty-theme package; can't use the `theme` option here because it reads cfg.package.version, which is null
+        window = {
+          opacity = 0.85;
+          decorations = "None";
+          startup_mode = "Maximized";
+          padding = { x = 20; y = 20; };
+          dynamic_padding = true;
+        };
+        font.size = 14;
+        cursor.style = { blinking = "On"; };
+      };
+    };
+
+    ghostty = {
+      enable = true;
+      # ghostty binary comes from Arch (pacman); HM manages config only
+      package = null;
+      # systemd unit is provided by the pacman package; HM's needs the nix pkg
+      systemd.enable = false;
+      settings = {
+        # transparent window, matches alacritty's current 0.85 opacity
+        background-opacity = 0.85;
+        # blur the background behind the transparent window (KDE/KWin)
+        background-blur-radius = 20;
+      };
+    };
+  };
 }
