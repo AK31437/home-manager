@@ -22,7 +22,7 @@ Adding a new dotfile/dir requires a new `home.file` entry + rebuild. The live fi
 ## Repo layout
 
 - `home.nix` — the only Nix entrypoint. Hardcodes `home.username = "anon"`, `stateVersion = "25.11"`. Do not bump stateVersion; read the comment before touching it.
-- `config.fish` — installed as a plain file (not `programs.fish`). Contains fish vi keybindings, `alias v='nvim'`, `DOTNET_CLI_TELEMETRY_OPTOUT`.
+- `config.fish` — installed as a plain file (not `programs.fish`; its `package` is non-nullable and installing the Nix fish previously broke login config on this box). Contains interactive-only bits (vi keybindings, `alias v='nvim'`, `set -g fish_greeting`) inside `status is-interactive`, and `DOTNET_CLI_TELEMETRY_OPTOUT` (global/exported) outside so it applies to non-interactive sessions too.
 - `nvim/` — lazy.nvim setup. `init.lua` requires `config/options`, `config/keybinds`, `config/lazy`. New plugins go in `lua/plugins/` (auto-imported) as lazy.nvim specs. `lazy-lock.json` is the plugin lockfile — generated, don't hand-edit. Update plugins from inside nvim with `:Lazy`.
 - `install.script` — one-shot bootstrap (single-user Nix install + channel add + home-manager install). The README is stock home-manager docs, not repo-specific.
 
