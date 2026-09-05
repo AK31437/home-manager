@@ -9,3 +9,5 @@ nix-channel --update
 
 nix-shell '<home-manager>' -A install
 
+echo "Don't forget to set the right user in home.nix!"
+
