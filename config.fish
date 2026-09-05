@@ -20,10 +20,10 @@ if status is-interactive
 
     alias cpuago='cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' # check available active scaling_governor
     alias cpugov='cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' # active scaling_governor
-    alias cpuper='echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor' # set scaling_governor to performance mode
-    alias cpupow='echo powersave | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor' # set scaling_governor to powersave mode
+    alias cpuper='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor' # set scaling_governor to performance mode
+    alias cpupow='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor' # set scaling_governor to powersave mode
     alias cpufre='watch cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq' # watch cpu frequency live
 
     # ------------------------------------------------------------
-    
+
 end
